@@ -1,0 +1,388 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* ── Reset & base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f1117;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ── Lobby ────────────────────────────────────────────────────────────────── */
+.lobby {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.lobby-card {
+  background: #1a1f2e;
+  border: 1px solid #2d3748;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  max-width: 560px;
+  width: 100%;
+}
+
+.lobby-card h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.room-form label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.room-form input {
+  background: #0f1117;
+  border: 1px solid #2d3748;
+  border-radius: 0.5rem;
+  color: #e2e8f0;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.room-form input:focus { border-color: #667eea; }
+
+.room-form button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  transition: opacity 0.2s;
+}
+
+.room-form button:hover { opacity: 0.9; }
+
+.how-it-works h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.how-it-works ol {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.how-it-works li { line-height: 1.6; color: #cbd5e1; }
+.how-it-works code {
+  background: #0f1117;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  padding: 0.1em 0.4em;
+  color: #a78bfa;
+}
+
+.tip {
+  margin-top: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── Room ─────────────────────────────────────────────────────────────────── */
+.room {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.room-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.room-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.room-header {
+  align-items: center;
+  background: #1a1f2e;
+  border-bottom: 1px solid #2d3748;
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  flex-shrink: 0;
+}
+
+.back-link {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.back-link:hover { color: #e2e8f0; }
+
+.room-header h1 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.room-name { color: #a78bfa; }
+
+.status-badge {
+  background: #0f1117;
+  border: 1px solid #2d3748;
+  border-radius: 2rem;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  white-space: nowrap;
+}
+
+/* ── Log aside ────────────────────────────────────────────────────────────── */
+.log-aside {
+  background: #0d1117;
+  border-left: 1px solid #2d3748;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 340px;
+}
+
+.log-aside-header {
+  align-items: center;
+  background: #1a1f2e;
+  border-bottom: 1px solid #2d3748;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.log-aside-title {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.log-legend {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.legend-you  { color: #60a5fa; }
+.legend-peer { color: #a78bfa; }
+
+.log-clear-btn {
+  background: transparent;
+  border: 1px solid #2d3748;
+  border-radius: 0.25rem;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+}
+.log-clear-btn:hover { color: #94a3b8; border-color: #475569; }
+
+.log-panel {
+  flex: 1;
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+.log-row {
+  align-items: baseline;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.1rem 0.75rem;
+}
+.log-row:hover { background: rgba(255,255,255,0.03); }
+
+.log-ts {
+  color: #475569;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+}
+
+.log-origin {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.65rem;
+  width: 4.5rem;
+}
+
+.log-local  .log-origin { color: #60a5fa; }
+.log-peer   .log-origin { color: #a78bfa; }
+
+.log-msg { color: #94a3b8; word-break: break-word; }
+
+.log-level-warn  .log-msg { color: #fbbf24; }
+.log-level-error .log-msg { color: #f87171; }
+
+/* hide log panel on narrow screens */
+@media (max-width: 900px) {
+  .log-aside { display: none; }
+}
+
+/* ── Video grid ───────────────────────────────────────────────────────────── */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
+.video-tile {
+  background: #1a1f2e;
+  border: 1px solid #2d3748;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-tile video {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Mirror the local camera so it feels natural */
+.video-tile.local video { transform: scaleX(-1); }
+
+/* ── Per-tile stats overlay ──────────────────────────────────────────────── */
+.video-stats {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 0.25rem;
+  bottom: 0.5rem;
+  color: #94a3b8;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  right: 0.5rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.video-stats:empty { display: none; }
+
+.video-label {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  bottom: 0.5rem;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Waiting overlay ──────────────────────────────────────────────────────── */
+.waiting-overlay {
+  align-items: center;
+  background: #1a1f2e;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  color: #94a3b8;
+}
+
+.waiting-overlay .hint {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ── Debug panel ──────────────────────────────────────────────────────────── */
+.debug-info {
+  background: #1a1f2e;
+  border-top: 1px solid #2d3748;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.25rem;
+}
+
+.debug-info summary { color: #64748b; cursor: pointer; }
+.debug-info summary:hover { color: #94a3b8; }
+
+.debug-info dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.debug-info dt { color: #64748b; }
+.debug-info dd { color: #94a3b8; font-family: monospace; }
+.debug-info .user-id { font-size: 0.7rem; word-break: break-all; }

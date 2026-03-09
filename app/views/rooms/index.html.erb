@@ -1,0 +1,52 @@
+<div class="lobby">
+  <div class="lobby-card">
+    <h1>WebRTC + Action Cable</h1>
+    <p class="subtitle">
+      A live demo of peer-to-peer video using WebRTC for media and
+      Action Cable (WebSockets) for signaling.
+    </p>
+
+    <form class="room-form" onsubmit="joinRoom(event)">
+      <label for="room-name">Room name</label>
+      <input
+        id="room-name"
+        type="text"
+        placeholder="e.g. my-room"
+        required
+        autocomplete="off"
+        autofocus
+      >
+      <button type="submit">Join Room &rarr;</button>
+    </form>
+
+    <div class="how-it-works">
+      <h2>How it works</h2>
+      <ol>
+        <li>
+          <strong>Action Cable (WebSocket)</strong> — When you join a room, your
+          browser opens a persistent WebSocket connection to the Rails server via
+          <code>SignalingChannel</code>. This channel relays small "signaling"
+          messages (SDP offers/answers and ICE candidates) between peers.
+        </li>
+        <li>
+          <strong>WebRTC</strong> — Once both peers have exchanged signaling
+          messages, the browser establishes a direct peer-to-peer media connection.
+          Audio and video then flow <em>directly</em> between browsers — the Rails
+          server is no longer involved.
+        </li>
+      </ol>
+      <p class="tip">
+        Open this room on two different browsers or machines on the same network
+        and enter the same room name to connect.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function joinRoom(e) {
+    e.preventDefault()
+    const name = document.getElementById("room-name").value.trim()
+    if (name) window.location.href = "/rooms/" + encodeURIComponent(name)
+  }
+</script>

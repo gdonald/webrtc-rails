@@ -1,0 +1,79 @@
+<% content_for :head do %>
+  <%# Prevent Turbo from caching this page — each visit must generate a fresh user_id %>
+  <meta name="turbo-cache-control" content="no-cache">
+<% end %>
+
+<%# The data-controller="webrtc" attribute tells Stimulus to boot our WebRTC
+    controller on this element. The two data-webrtc-*-value attributes are
+    passed in as Stimulus "values" — a clean way to pass server-side data
+    to JavaScript without inline scripts. %>
+
+<div
+  class="room"
+  data-controller="webrtc"
+  data-webrtc-room-value="<%= @room %>"
+  data-webrtc-user-id-value="<%= @user_id %>"
+>
+  <header class="room-header">
+    <a href="/" class="back-link">&larr; Lobby</a>
+    <h1>Room: <span class="room-name"><%= @room %></span></h1>
+    <div class="status-badge" data-webrtc-target="status">Starting camera…</div>
+  </header>
+
+  <div class="room-body">
+    <div class="room-main">
+      <div class="video-grid">
+        <%# Local video — muted so you don't hear yourself, mirrored via CSS %>
+        <div class="video-tile local">
+          <video
+            data-webrtc-target="localVideo"
+            autoplay
+            muted
+            playsinline
+          ></video>
+          <span class="video-label">You</span>
+          <div class="video-stats" data-webrtc-target="localStats"></div>
+        </div>
+
+        <%# Remote video — filled in by JavaScript when a peer connects %>
+        <div class="video-tile remote">
+          <video
+            data-webrtc-target="remoteVideo"
+            autoplay
+            playsinline
+          ></video>
+          <div class="waiting-overlay" data-webrtc-target="waitingOverlay">
+            <p>Waiting for another person to join&hellip;</p>
+            <p class="hint">Share this URL with someone on your network.</p>
+          </div>
+          <span class="video-label">Remote</span>
+          <div class="video-stats" data-webrtc-target="remoteStats"></div>
+        </div>
+      </div>
+
+      <div class="debug-info">
+        <details>
+          <summary>Debug info</summary>
+          <dl>
+            <dt>Room</dt><dd><%= @room %></dd>
+            <dt>Your ID</dt><dd class="user-id"><%= @user_id %></dd>
+            <dt>Cable state</dt><dd data-webrtc-target="cableState">—</dd>
+            <dt>ICE state</dt><dd data-webrtc-target="iceState">—</dd>
+          </dl>
+        </details>
+      </div>
+    </div>
+
+    <aside class="log-aside">
+      <div class="log-aside-header">
+        <span class="log-aside-title">Live debug log</span>
+        <span class="log-legend">
+          <span class="legend-you">YOU</span>
+          <span class="legend-peer">PEER</span>
+        </span>
+        <button class="log-clear-btn" data-action="click->webrtc#clearLog">Clear</button>
+      </div>
+      <div class="log-panel" data-webrtc-target="logPanel"></div>
+    </aside>
+  </div>
+</div>

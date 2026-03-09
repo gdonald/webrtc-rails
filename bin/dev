@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+exec "./bin/rails", "server", "-b", "ssl://0.0.0.0:3000?key=config/ssl/dev.key&cert=config/ssl/dev.crt", *ARGV
