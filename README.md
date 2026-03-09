@@ -1,5 +1,7 @@
 # WebRTC + Action Cable
 
+![Screenshot](https://raw.githubusercontent.com/gdonald/webrtc-rails/refs/heads/main/screenshot.png)
+
 A minimal Rails 8 app demonstrating peer-to-peer video chat. Two browsers on the same network open a room URL, and video/audio flows directly between them. The Rails server is only involved in **signaling** — once the peers connect, the server carries no media at all.
 
 ## How it works
